@@ -38,6 +38,7 @@ public class HeroesAdapter extends RecyclerView.Adapter<HeroesAdapter.HeroViewHo
                 .into(holder.imageView);
 
         holder.textView.setText(hero.getName());
+        holder.MarvalBio.setText(hero.getBio());
     }
 
     @Override
@@ -48,13 +49,28 @@ public class HeroesAdapter extends RecyclerView.Adapter<HeroesAdapter.HeroViewHo
     class HeroViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imageView;
-        TextView textView;
+        TextView textView, MarvalBio;
+
+        String biography;
 
         public HeroViewHolder(View itemView) {
             super(itemView);
 
             imageView = itemView.findViewById(R.id.imageView);
             textView = itemView.findViewById(R.id.textView);
+            MarvalBio = itemView.findViewById(R.id.tv_bio);
+
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (MarvalBio.getVisibility() == View.GONE) {
+                        MarvalBio.setVisibility(View.VISIBLE);
+                    } else {
+                        MarvalBio.setVisibility(View.GONE);
+                    }
+                }
+            });
         }
     }
 }
